@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+
+{% block body %}
+  <h2>Upcoming Events</h2>
+  <ul class="upcoming-all">
+  {% for event in events %}
+      <li> {{event}}
+  {% else %}
+    <p>There Are No Upcoming Events</p>
+  {% endfor %}
+  </ul>
+
+  {% if session['username'] %}
+    {% if session['usertype'] == 'organization' %}
+      <h2>Upcoming Events Hosted By You</h2>
+      <ul class="upcoming-user">
+        {% for event in hosting_ev %}
+          <li> {{event}}
+        {% else %}
+          <p>You are not hosting any upcoming events</p>
+        {% endfor %}
+      </ul>
+      <br><br>
+      <h3><a href="{{ url_for('create_event')}}">CREATE EVENT</a></h3>
+      <h3><a href="{{ url_for('cancel_event')}}">CANCEL EVENT</a></h3>
+    {% else %}
+      <h2>Upcoming Events You Are Attending</h2>
+      <ul class="upcoming-user">
+        {% for event in attending_ev %}
+          <li> {{event}}
+        {% else %}
+          <p>You are not attending any upcoming events</p>
+        {% endfor %}
+      </ul>
+      <br><br>
+      <h3><a href="{{ url_for('attend_event')}}">ATTEND EVENT</a></h3>
+    {% endif %}
+  {% endif %}
+{% endblock %}

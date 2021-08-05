@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Cancel Event{% endblock %}
+
+{% block body %}
+		<h2>CANCEL EVENT</h2>
+    {% if error %}
+      <h3 style="color: red;""> {{error}} </h3>
+    {% endif %}
+    <br><br>
+    <h3>ENTER THE NAME OF THE EVENT YOU WISH TO CANCEL</h3>
+    <ul class="upcoming-user">
+    {% for event in events %}
+        <li> {{event}}
+    {% else %}
+        <p>You are not hosting any upcoming events</p>
+    {% endfor %}
+    </ul>
+    <form action="" method="post">
+			Event:  <br>
+      <input type="text" name="title" />
+			<br />
+			<br />
+			<input type="submit" value="submit" />
+		</form>
+    <h3><a href="{{ url_for('home_page')}}">HOME PAGE</a></h3>
+{% endblock %}

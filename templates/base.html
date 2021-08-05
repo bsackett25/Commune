@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Commune{% endblock %}</title>
+  </head>
+  <body>
+    <div style="width: 100%; display: table;">
+    <div style="width: 100%;">
+        <div style="width: 50%; float: left; display: table-cell;">
+          <h1><a href="{{ url_for('home_page') }}" style="color:black">Commune</a></h1>
+          <p>Charity Event Organizer</p>
+        </div>
+        <div style="float: right; display: table-cell">
+          {% if session["username"] %}
+            <h1>
+              {% if session['usertype'] == 'volunteer' %}
+                Logged in as Volunteer: {{session["username"]}} |
+              {% else %}
+                Logged in as Organization: {{session["username"]}} |
+              {% endif %}
+
+              <a href="{{ url_for('logout') }}">Logout</a>
+            </h1>
+          {% else %}
+            <h1>
+              <a href="{{ url_for('login_portal') }}">Login</a> |
+              <a href="{{ url_for('register_portal') }}">Register</a>
+            </h1>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+      <br>
+      {% block body %}
+		  {% endblock %}
+  </body>
+</html>

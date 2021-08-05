@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Attend Event{% endblock %}
+
+{% block body %}
+		<h2>ATTEND EVENT</h2>
+    {% if error %}
+      <h3 style="color: red;""> {{error}} </h3>
+    {% endif %}
+    <br><br>
+    <h3>ENTER THE NAME OF THE EVENT YOU WISH TO ATTEND</h3>
+    <ul>
+    {% for event in events %}
+        <li> {{event}}
+    {% else %}
+        <p>There are no events you may attend</p>
+    {% endfor %}
+    </ul>
+    <form action="" method="post">
+			Event:  <br>
+      <input type="text" name="title" />
+			<br />
+			<br />
+			<input type="submit" value="submit" />
+		</form>
+    <h3><a href="{{ url_for('home_page')}}">HOME PAGE</a></h3>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Register Organization{% endblock %}
+
+{% block body %}
+    <h2>REGISTER ORGANIZATION</h2>
+		{% if un_failure %}
+			<h2 style="color:red;">Username Has Already Been Taken</h2>
+		{% endif %}
+    {% if blank_failure %}
+			<h2 style="color:red;">Username, Password, and Display Name must be at least one character</h2>
+		{% endif %}
+		<form action="" method="post">
+			Username:  <input type="text" name="user" />
+			<br />
+			<br />
+			Password:  <input type="text" name="pass" />
+			<br />
+			<br />
+      Display Name: <input type="text" name="displayName" />
+      <br />
+			<br />
+			<input type="submit" value="submit" />
+		</form>
+		<br>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Volunteer Login{% endblock %}
+
+{% block body %}
+		<h2>VOLUNTEER LOGIN</h2>
+		{% if failure %}
+			<h2 style="color:red;">Incorrect Username or Password!</h2>
+		{% endif %}
+		<form action="" method="post">
+			Username:  <input type="text" name="user" />
+			<br />
+			<br />
+			Password:  <input type="text" name="pass" />
+			<br />
+			<br />
+			<input type="submit" value="submit" />
+		</form>
+		<br>
+		<p>To Register A Volunteer, <a href="{{ url_for('register_volunteer') }}">Click Here</a></p>
+{% endblock %}
